@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业案例</title>
+<link href="css/index.css" rel="stylesheet" />
+<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="js/index.js" type="text/javascript"></script>
+<script>
+$(function() {
+	
+	//绘制月历体——————————————————————————————————————————
+	
+	 for(var i=0;i<35;i++){
+	 $("<li><span></span></li>").appendTo(".month-body").addClass("month-cell"); 
+	 }
+
+	  var today=new Date()  
+	  
+	  var FullYear = today.getFullYear(); //获取年份
+	  var m = today.getMonth();           //获取月号
+	  var month = today.getMonth()+1;     //获取月份
+	  
+	  if(month<10){
+		 month="0"+month; 
+	  }
+	  var date = today.getDate();	      //获取日期
+	  var day = today.getDay();           //获取星期
+	  
+	  var monthsNum=[31,28,31,30,31,30,31,31,30,31,30,31];
+	  var isleapyear = FullYear%4;        //判断闰年
+	  if(isleapyear==0){
+		  monthsNum[1]=29;
+	  }
+  
+      if(day==0){
+		  day = 7;
+	  }
+	  var firstDay = day-(date%7-1);       //!important 计算月初星期数
+	  
+	  if(firstDay>7)
+	  {
+		  firstDay=firstDay-7;
+	  }
+
+	  if(firstDay==7){                     //如果月初为七，归零
+		  firstDay =0;
+	  }
+	  if(firstDay<0){                       //如果月初为负，加七循环
+		  firstDay +=7;
+	  }
+	  
+	  var f = firstDay;
+	  for(var j=1;j<=monthsNum[m];j++){
+		  $("li.month-cell span").eq(f).text(j).parent().addClass("days");
+		  f++; 
+	  }
+	  
+	  $("li.month-cell span").eq(firstDay-1+date).parent().addClass("today");
+	  
+	  $(".month-head span").text(FullYear+"年"+month+"月");
+	  
+})
+
+</script>
+</head>
+
+<body>
+<!-------------top start------------>
+<div id="top">    
+    <span class="welcome" >欢迎来到卓一企管！</span>
+    <ul class="top_bar">
+        <li><a href="#">登陆</a>|<a href="#">注册</a>|<a href="#">加入收藏</a>|<a href="#">联系我们</a></li>
+        <li class="top_phone">服务电话：<span>0518-82745928</span></li>
+    </ul>         
+</div>
+<!-------------top end------------>
+
+
+
+<!-------------header start------------>
+<div id="header">
+	<img class="header_logo" src="images/logo.jpg" alt="logo" />
+    <div class="header_search">
+    	<div id="sel_list" class="select">
+        	<h2>课程</h2>
+            <a href="javascript:;"></a>
+            <ul>
+            	<li>营销类</li>
+            	<li>技能类</li>
+            	<li>认证类</li>
+            </ul>
+        </div>
+        <form action="" class="sel_text">
+        	<input class="text" type="text" value="请输入课程名称" />
+            <input class="submit" type="submit" value="搜索" />
+        </form>        
+    </div> 
+    <ul class="search_list">
+        <li><a class="active" href="#">生产管理</a></li>
+        <li><a href="#">质量管理</a></li>
+        <li><a href="#">人力资源</a></li>
+        <li><a href="#">领导力管理技能</a></li>
+        <li><a href="#">销售与市场</a></li>
+    </ul>
+    <div class="img">
+        <a class="weibo" href="#"></a>
+        <a class="weixin" href="#"></a>
+    </div>   
+</div>
+<!-------------header end------------>
+
+
+
+<!-------------nav start------------>
+<div id="nav">
+	<ul>
+		<li><a href="#">首页</a></li>
+		<li><a href="#">服务产品</a></li>
+		<li><a href="#">公开课</a></li>
+		<li><a href="#">内训课</a></li>
+		<li><a href="#">讲师团队</a></li>
+		<li><a href="#">客户见证</a></li>
+		<li><a href="#">在线学习</a></li>
+		<li><a href="#">新闻中心</a></li>
+		<li class="no_bd"><a href="#">关于我们</a></li>
+	</ul>
+</div>
+<!-------------nav end------------>
+
+
+
+<!-------------ad start------------>
+<div id="ad">
+	<div class="ad_item1" style="filter:alpha(opacity:100);opacity:100;"></div>
+	<div class="ad_item2"></div>
+	<div class="ad_item3"></div>
+</div>
+<!-------------ad end------------>
+
+
+
+
+<!-------------content start------------>
+<div id="content">
+	<div id="side"> 
+    	<!---------------课程分类--------------------->   	
+    	<ul class="course">
+        	<li class="first"><span>课程分类</span><a href="#">更多</a></li>
+        	<li><a href="#">生产管理</a></li>
+        	<li><a href="#">质量管理</a></li>
+        	<li><a href="#">采购物流</a></li>
+        	<li><a href="#">领导力管理技能</a></li>
+        	<li><a href="#">人力资源</a></li>
+        	<li><a href="#">职业能力</a></li>
+        	<li><a href="#">销售与市场</a></li>
+        	<li><a href="#">职业资格认证</a></li>
+        	<li><a href="#">ISO国标</a></li>
+        	<li><a href="#">客户服务</a></li>
+        </ul>
+        
+        <!--------------------日历------------------->
+        <div class="calendar">
+        	<div class="month-head"><span></span></div>
+            <ul class="month-body">
+            <div class="month-cell week"><span>日</span></div>    
+            <div class="month-cell week"><span>一</span></div>
+            <div class="month-cell week"><span>二</span></div>
+            <div class="month-cell week"><span>三</span></div>
+            <div class="month-cell week"><span>四</span></div>     
+            <div class="month-cell week"><span>五</span></div>      
+            <div class="month-cell week"><span>六</span></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        
+        <!--------------------下载中心------------------->
+		<div class="side_download">
+        	<h2 class="side_h2"><span>下载中心</span><a href="#">更多></a></h2>
+            <ul>
+            	<li><a href="#">TWI一线主管技能训练</a></li>
+            	<li><a href="#">危险品化学品安全管理培训</a></li>
+            	<li><a href="#">CSE客诉处理工程师训练</a></li>
+            	<li><a href="#">TWI一线主管技能训练</a></li>
+            </ul>
+        </div>
+        
+        <!--------------------客户案例------------------->
+        <div class="custom_case">
+        	<h2 class="side_h2"><span>客户案例</span><a href="#">更多></a></h2>
+            <div class="custom_title">
+            	<img src="images/custom_title.jpg" alt="头像" />
+                <span>广州天创股份有限公司<br />培训主管</span>
+            </div>
+            <div class="custom_text">
+            	<span class="t_left">“</span><p>一直头疼终端门店销售人员的培训问题，卓一企业培训提供了一个很好的解决方案。很方便进行一线人员的培训，同时辅以跟踪考核体系，让培训效果得到了很大的提升。</p><span class="t_right">”</span>
+            </div>            
+        </div>
+        
+        <!--------------------联系我们------------------->
+        <div class="call_us">
+        	<h2 class="side_h2"><span>联系我们</span><a href="#">更多></a></h2>
+            <strong>卓一企业管理顾问有限公司</strong>
+            <ul>
+            	<li>公司电话</li>
+            	<li>苏州：+86 512 68653001</li>
+            	<li>上海：+86 512 68653001</li>
+                <li>南京：+86 512 68653001</li>	
+            </ul>
+        </div>
+    </div>
+<!--------------------------------->    
+    
+    <div id="wrap">
+    	<div class="wrap_top">
+            <!--------------------本月课程------------------->
+            <div class="now_month">
+                <h2><span>本月课程</span><a href="#">更多></a></h2>
+                <ul>
+                    <li><a href="#">TWI一线主管技能训练</a></li>
+                    <li><a href="#">危险品化学品安全管理培训</a></li>
+                    <li><a href="#">CSE客诉处理工程师训练</a></li>
+                    <li><a href="#">TWI一线主管技能训练</a></li>
+                    <li><a href="#">TWI一线主管技能训练</a></li>
+                    <li><a href="#">危险品化学品安全管理培训</a></li>
+                    <li><a href="#">CSE客诉处理工程师训练</a></li>
+                    <li><a href="#">TWI一线主管技能训练</a></li>
+                </ul>
+            </div>
+            
+            <!--------------------热门课程------------------->
+            <div class="hot_course">
+                <h2><span>热门课程</span><a href="#">更多></a></h2>
+                <ul>
+                    <li><a href="#">采购价格分析成本</a></li>
+                    <li><a href="#">工作计划和执行力</a></li>
+                    <li><a href="#">有效的沟通技巧</a></li>
+                    <li><a href="#">思维导图训练</a></li>
+                    <li><a href="#">采购价格分析成本</a></li>
+                    <li><a href="#">工作计划和执行力</a></li>
+                    <li><a href="#">有效的沟通技巧</a></li>
+                    <li><a href="#">思维导图训练</a></li>
+                </ul>
+            </div>
+            
+            <!--------------------登陆------------------->
+            <div class="wrap_login">
+                <h2>享受知识，关注高效</h2>            
+                <form class="login_form" action="">
+                    <p>账号：</p>
+                    <input class="login_user" type="text" name="user"  />
+                    <p>密码：<a href="#">忘记密码？</a></p>
+                    <input class="login_pass"  type="password" name="password"/>
+                    <span><input type="checkbox"  />记住账号，下次登录免输入</span>
+                    <input class="login_btn"type="button" value="登录"  name="login"/>
+                    <span>没有账号？<a href="#">立即注册</a></span>
+                </form>            
+            </div>
+        </div>
+        
+        <!--------------------体验视频------------------->
+        <div class="try_video">
+        	<a class="video1" href="#"><img src="images/video1.jpg" alt="video1"></a>
+            <a class="video2" href="#"><img src="images/video2.jpg" alt="video2"></a>
+        </div>
+        
+        <!--------------------课程分类------------------->
+        <div class="wrap_course">
+        	<div class="wrap_title"><h2>课程分类</h2><a href="#">更多></a></div>
+            <ul>
+            	<li>
+                	<a href="#">
+            		<img src="images/course1.jpg" alt="course1">
+            		<p>生产管理</p>
+                    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course2.jpg" alt="course2">
+            		<p>质量管理</p>
+            	    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course3.jpg" alt="course3">
+            		<p>采购物流</p>
+            	    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course4.jpg" alt="course4">
+            		<p>领导力管理技能</p>
+            	    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course5.jpg" alt="course5">
+            		<p>人力资源</p>
+            	    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course6.jpg" alt="course6">
+            		<p>职业能力</p>
+                    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course7.jpg" alt="course7">
+            		<p>销售与市场</p>
+            	    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course8.jpg" alt="course8">
+            		<p>职业资格认证</p>
+                    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course9.jpg" alt="course9">
+            		<p>ISO国标</p>
+                    </a>
+            	</li>
+            	<li>
+                	<a href="#">
+            		<img src="images/course10.jpg" alt="course10">
+            		<p>客户服务</p>
+            	    </a>
+            	</li>
+            </ul>
+        </div>
+        
+        <!--------------------培训展示------------------->
+        <div class="train_show">
+        	<div class="wrap_title"><h2>培训展示</h2><a href="#">更多></a></div>
+            <div id="show">
+            <ul>
+            	<li>
+            		<img src="images/show1.jpg" alt="show1">            		
+            	</li>
+            	<li>
+            		<img src="images/show2.jpg" alt="show2">            		
+            	</li>
+            	<li>
+            		<img src="images/show3.jpg" alt="show3">            		
+            	</li>
+            	<li>
+            		<img src="images/show4.jpg" alt="show4">            		
+            	</li>            	
+            </ul>
+            </div>
+        </div>
+        
+        <!--------------------公司新闻------------------->
+        <div class="news">
+        	<div class="wrap_title"><h2>公司新闻</h2><a href="#">更多></a></div>
+        	<img src="images/news.jpg" alt="news">
+        	<ul>
+        		<li><a href="#">基层干部管理能力提升训练培训圆满结束</a><span>2015-10-28</span></li>
+        		<li><a href="#">中层干部管理能力提升训练培训圆满结束</a><span>2015-10-28</span></li>
+        		<li><a href="#">卓一企管”采山上幽静，寻心灵珍宝” 火凤凰体验式</a><span>2015-10-28</span></li>
+        		<li><a href="#">苏州某大型企业“班组长管理技能提升训练”培训圆满结束</a><span>2015-10-28</span></li>
+        		<li><a href="#">江苏某大型企业“品质控制与食品安全”培训圆满结束</a><span>2015-10-28</span></li>
+        	</ul>
+        </div>
+    </div>    
+</div>
+<!-------------content end------------>
+
+
+
+<!-------------footer start------------>
+<div id="footer">
+	<div class="list_box">
+        <ul class="f_ul">
+            <li class="footer_list">
+                <ul>
+                    <li class="list_head">卓一活动</li>
+                    <li><a href="">公司简介</a></li>
+                    <li><a href="">发展历程</a></li>
+                    <li><a href="">业务流程</a></li>
+                </ul>
+            </li>
+            <li class="footer_list">
+                <ul>
+                    <li class="list_head">客户体验</li>
+                    <li><a href="">公司简介</a></li>
+                    <li><a href="">发展历程</a></li>
+                    <li><a href="">业务流程</a></li>
+                </ul>
+            </li>
+            <li class="footer_list">			
+                <ul>
+                    <li class="list_head">加入卓一</li>
+                    <li><a href="">公司简介</a></li>
+                    <li><a href="">发展历程</a></li>
+                    <li><a href="">业务流程</a></li>
+                </ul>
+            </li>
+            <li class="footer_list">			
+                <ul>
+                    <li class="list_head">网站地图</li>
+                    <li><a href="">公司简介</a></li>
+                    <li><a href="">发展历程</a></li>
+                    <li><a href="">业务流程</a></li>
+                </ul>
+            </li>
+            <li class="footer_list">			
+                <ul>
+                    <li class="list_head">友情链接</li>
+                    <li><a href="">公司简介</a></li>
+                    <li><a href="">发展历程</a></li>
+                    <li><a href="">业务流程</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="weixin">
+        	<img src="images/weixin.jpg" alt="weixin">
+        	<p>微信扫一扫，关注我们</p>
+        </div>
+    </div>
+    
+    <div><p>苏州卓一企业管理顾问有限公司 备案号：苏ICP备1108979847号-1</p></div>    
+</div>
+<!-------------footer end------------>
+
+<!--[if IE 6]> //在指定浏览版本显示
+<script src="js/DD_belatedPNG_0.0.8a.js"></script>
+<script>
+	DD_belatedPNG.fix("*");
+</script>
+<![endif]-->
+</body>
+</html>
